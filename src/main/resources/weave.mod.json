@@ -6,6 +6,12 @@
     "com.example.mod.ExampleMod"
   ],
   "hooks": [
-    "com.example.mod.hook.MinecraftHook"
+    "com.example.mod.hook.MinecraftHook",
+    "com.example.mod.hook.EntityHook",
+    "com.example.mod.hook.EntityPlayerHook",
+    "com.example.mod.hook.EntityPlayerSPHook",
+    "com.example.mod.hook.FontRendererHook",
+    "com.example.mod.hook.GuiUtilRenderComponentsHook",
+    "com.example.mod.hook.ThrowableHook"
   ]
 }
