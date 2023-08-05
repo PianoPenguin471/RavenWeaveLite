@@ -1,26 +1,23 @@
 package keystrokesmod.client.main;
 
-import com.google.common.eventbus.Subscribe;
-import keystrokesmod.client.utils.version.VersionManager;
 import keystrokesmod.client.clickgui.raven.ClickGui;
 import keystrokesmod.client.command.CommandManager;
 import keystrokesmod.client.config.ConfigManager;
 import keystrokesmod.client.module.Module;
 import keystrokesmod.client.module.ModuleManager;
-import keystrokesmod.client.module.modules.HUD;
-import keystrokesmod.client.utils.*;
+import keystrokesmod.client.utils.ChatHelper;
+import keystrokesmod.client.utils.DebugInfoRenderer;
+import keystrokesmod.client.utils.MouseManager;
+import keystrokesmod.client.utils.Utils;
+import keystrokesmod.client.utils.version.VersionManager;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.util.ResourceLocation;
 import net.weavemc.loader.api.event.ChatReceivedEvent;
 import net.weavemc.loader.api.event.EventBus;
 import net.weavemc.loader.api.event.SubscribeEvent;
 import net.weavemc.loader.api.event.TickEvent;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
@@ -54,9 +51,9 @@ public class Raven {
    public static final VersionManager versionManager  = new VersionManager();
    public static CommandManager commandManager;
    // TODO: Fix links to point to the proper repo
-   public static final String sourceLocation = "https://github.com/Kopamed/Raven-bPLUS";
-   public static final String downloadLocation = "https://github.com/Kopamed/Raven-bPLUS/raw/main/build/libs/%5B1.8.9%5D%20BetterKeystrokes%20V-1.2.jar";
-   public static final String discord = "https://discord.gg/QQMQfCRyNP";
+   public static final String sourceLocation = "https://github.com/PianoPenguin471/RavenWeaveLite";
+   public static final String downloadLocation = "https://github.com/PianoPenguin471/RavenWeaveLite/releases/";
+   public static final String discord = "https://discord.gg/BDt8SGbSzN";
    public static String[] updateText = {"Your version of Raven B+ (" + versionManager.getClientVersion().toString() + ") is outdated!", "Enter the command update into client CommandLine to open the download page", "or just enable the update module to get a message in chat.", "", "Newest version: " + versionManager.getLatestVersion().toString()};
    public static ConfigManager configManager;
    public static ClientConfig clientConfig;
@@ -85,17 +82,6 @@ public class Raven {
       EventBus.subscribe(new ChatHelper());
 
       Runtime.getRuntime().addShutdownHook(new Thread(scheduledExecutorService::shutdown));
-
-      InputStream ravenLogoInputStream = HUD.class.getResourceAsStream("/assets/keystrokes/raven.png");
-      BufferedImage bf;
-      try {
-         assert ravenLogoInputStream != null;
-         bf = ImageIO.read(ravenLogoInputStream);
-         mResourceLocation = Minecraft.getMinecraft().getTextureManager().getDynamicTextureLocation("raven", new DynamicTexture(bf));
-      } catch (IOException | IllegalArgumentException | NullPointerException noway) {
-         noway.printStackTrace();
-         mResourceLocation = null;
-      }
 
       commandManager = new CommandManager();
       clickGui = new ClickGui();

@@ -1,6 +1,6 @@
 package keystrokesmod.client.module.modules.render;
 
-import com.example.mod.events.impl.RenderLabelEvent;
+import me.PianoPenguin471.events.impl.RenderLabelEvent;
 import keystrokesmod.client.module.Module;
 import keystrokesmod.client.module.modules.world.AntiBot;
 import keystrokesmod.client.module.setting.impl.SliderSetting;

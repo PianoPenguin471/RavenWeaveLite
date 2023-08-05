@@ -70,8 +70,6 @@ public class ModuleManager {
       addModule(new SlyPort());
       addModule(new ClientNameSpoof());
       addModule(new FakeChat());
-      addModule(new NameHider());
-      addModule(new StringEncrypt());
       addModule(new WaterBucket());
       //addModule(new AutoConfig());
       addModule(new Terminal());

@@ -20,7 +20,7 @@ public class KeepSprint extends Module {
       this.registerSetting(c = new TickSetting("Only reduce reach hits", false));
    }
 
-   public static void sl(Entity en) {
+   public static void onHit(Entity en) {
       double dist;
       Module reach = Raven.moduleManager.getModuleByClazz(Reach.class);
       if (c.isToggled() && reach != null && reach.isEnabled() && !mc.thePlayer.capabilities.isCreativeMode) {

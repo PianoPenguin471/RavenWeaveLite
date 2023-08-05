@@ -6,10 +6,7 @@ import keystrokesmod.client.module.modules.combat.LeftClicker;
 import keystrokesmod.client.module.modules.combat.Reach;
 import keystrokesmod.client.module.modules.movement.KeepSprint;
 import keystrokesmod.client.module.modules.movement.NoSlow;
-import keystrokesmod.client.module.modules.other.NameHider;
-import keystrokesmod.client.module.modules.other.StringEncrypt;
 import keystrokesmod.client.module.modules.player.SafeWalk;
-import keystrokesmod.client.module.modules.render.AntiShuffle;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemBlock;
@@ -20,26 +17,7 @@ public class ASMEventHandler {
    public static String eventHandlerClassName = ASMEventHandler.class.getName().replace(".", "/"); //added replace or it won't launch
    private static final Minecraft mc = Minecraft.getMinecraft();
 
-   /**
-    * called when Minecraft format text
-    * ASM Modules : NameHider, AntiShuffle, StringEncrypt
-    */
    public static String getUnformattedTextForChat(String s) {
-      Module nameHider = Raven.moduleManager.getModuleByClazz(NameHider.class);
-      if (nameHider != null && nameHider.isEnabled()) {
-         s = NameHider.getUnformattedTextForChat(s);
-      }
-
-      Module antiShuffle = Raven.moduleManager.getModuleByClazz(StringEncrypt.class);
-      if (antiShuffle != null && antiShuffle.isEnabled()) {
-         s = AntiShuffle.getUnformattedTextForChat(s);
-      }
-
-      Module stringEncrypt = Raven.moduleManager.getModuleByClazz(StringEncrypt.class);
-      if (stringEncrypt != null && stringEncrypt.isEnabled()) {
-         s = StringEncrypt.getUnformattedTextForChat(s);
-      }
-
       return s;
    }
 
@@ -95,7 +73,7 @@ public class ASMEventHandler {
    public static void onAttackTargetEntityWithCurrentItem(Entity en) {
       Module keepSprint = Raven.moduleManager.getModuleByClazz(KeepSprint.class);
       if (keepSprint != null && keepSprint.isEnabled()) {
-         KeepSprint.sl(en);
+         KeepSprint.onHit(en);
       } else {
          mc.thePlayer.motionX *= 0.6D;
          mc.thePlayer.motionZ *= 0.6D;
@@ -108,6 +86,7 @@ public class ASMEventHandler {
     */
    public static void onTick() {
       Module autoClicker = Raven.moduleManager.getModuleByClazz(LeftClicker.class);
+      if (mc == null || mc.entityRenderer == null) return;
       if (autoClicker == null || !autoClicker.isEnabled() || !Mouse.isButtonDown(0) || !Reach.call()) {
          mc.entityRenderer.getMouseOver(1.0F);
       }

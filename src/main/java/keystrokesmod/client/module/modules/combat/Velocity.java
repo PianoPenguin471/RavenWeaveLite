@@ -1,6 +1,6 @@
 package keystrokesmod.client.module.modules.combat;
 
-import com.example.mod.events.impl.LivingUpdateEvent;
+import me.PianoPenguin471.events.impl.LivingUpdateEvent;
 import keystrokesmod.client.module.Module;
 import keystrokesmod.client.module.setting.impl.SliderSetting;
 import keystrokesmod.client.module.setting.impl.TickSetting;

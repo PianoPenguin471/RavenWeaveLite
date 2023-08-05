@@ -23,7 +23,6 @@ public class CommandManager {
         this.addCommand(new Discord());
         this.addCommand(new ConfigCommand());
         this.addCommand(new Clear());
-        this.addCommand(new Cname());
         this.addCommand(new Debug());
         this.addCommand(new Duels());
         this.addCommand(new Fakechat());
