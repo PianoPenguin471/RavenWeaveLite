@@ -1,8 +1,0 @@
-{
-  "mixinConfigs": [
-    "ravenweavelite.mixins.json"
-  ],
-  "entrypoints": [
-    "me.pianopenguin471.RavenWeaveLite"
-  ]
-}
