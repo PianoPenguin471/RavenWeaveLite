@@ -1,5 +1,5 @@
 # RavenWeaveLite
-A [Raven B+](https://github.com/Kopamed/Raven-bPLUS) port for [Weave] (https://github.com/Weave-MC) universal mod loader.
+A [Raven B+](https://github.com/Kopamed/Raven-bPLUS) port for [Weave](https://github.com/Weave-MC) universal mod loader.
 
 ---
 
