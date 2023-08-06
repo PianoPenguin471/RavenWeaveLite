@@ -52,8 +52,8 @@ public class ExplicitB9NameTags extends Module {
     public ExplicitB9NameTags() {
         super("(ExplicitB9)NameTags", ModuleCategory.render);
 
-        modeSetting = new SliderSetting("Mode (Hearts1/Hearts2/Percentage)", 1.0D, 1.0D, 3.0D, 1.0D);
-        mode = "Percentage"; // default value
+        modeSetting = new SliderSetting("Mode (Hearts/Health/Percent)", 1.0D, 1.0D, 3.0D, 1.0D);
+        mode = "Percent"; // default value
         scaleSetting = new SliderSetting("Scale", 5.0D, 0.1D, 10.0D, 0.1D);
         rangeSetting = new SliderSetting("Range", 0.0D, 0.0D, 512.0D, 1.0D);
         armorSetting = new TickSetting("Armor", true);
@@ -75,11 +75,11 @@ public class ExplicitB9NameTags extends Module {
         dura = durabilitySetting.isToggled();
         double modeInput = modeSetting.getInput();
         if (modeInput == 1.0D) {
-            mode = "Hearts1";
+            mode = "Hearts";
         } else if (modeInput == 2.0D) {
-            mode = "Hearts2";
+            mode = "Health";
         } else {
-            mode = "Percentage";
+            mode = "Percent";
         }
     }
 
@@ -148,12 +148,12 @@ public class ExplicitB9NameTags extends Module {
     private String getHealth(EntityPlayer player) {
         DecimalFormat decimalFormat = new DecimalFormat("0.#");
         double healthValue;
-        if (mode.equalsIgnoreCase("Percentage")) {
+        if (mode.equalsIgnoreCase("Percent")) {
             healthValue = player.getHealth() * 5.0F + player.getAbsorptionAmount() * 5.0F;
-        } else if (mode.equalsIgnoreCase("Hearts1")) {
+        } else if (mode.equalsIgnoreCase("Hearts")) {
             healthValue = player.getHealth() / 2.0F + player.getAbsorptionAmount() / 2.0F;
         } else {
-            //HeartsX2
+            //Health
             healthValue = player.getHealth() + player.getAbsorptionAmount();
         }
         return decimalFormat.format(healthValue);
@@ -165,14 +165,14 @@ public class ExplicitB9NameTags extends Module {
         llllIIllllIlllI = llllIIllllIllIl = (float) ((double) llllIIllllIlllI + (getWidth(" " + getHealth(player)) / 2) + 2.5D);
         float llllIIllllIllII = -llllIIllllIlllI - 2.2F;
         float llllIIllllIlIll = (float) (getWidth(getPlayerName(player)) + 4);
-        if (mode.equalsIgnoreCase("Percentage")) {
+        if (mode.equalsIgnoreCase("Percent")) {
             RenderUtils.drawBorderedRect(llllIIllllIllII, -3.0F, llllIIllllIlllI, 10.0F, 1.0F, (new Color(20, 20, 20, 180)).getRGB(), (new Color(10, 10, 10, 200)).getRGB());
         } else {
             RenderUtils.drawBorderedRect(llllIIllllIllII + 5.0F, -3.0F, llllIIllllIlllI, 10.0F, 1.0F, (new Color(20, 20, 20, 180)).getRGB(), (new Color(10, 10, 10, 200)).getRGB());
         }
 
         GlStateManager.disableDepth();
-        if (mode.equalsIgnoreCase("Percentage")) {
+        if (mode.equalsIgnoreCase("Percent")) {
             llllIIllllIlIll += (float) (getWidth(getHealth(player)) + getWidth(" %") - 1);
         } else {
             llllIIllllIlIll += (float) (getWidth(getHealth(player)) + getWidth(" ") - 1);
@@ -187,7 +187,7 @@ public class ExplicitB9NameTags extends Module {
             blendColor = RenderUtils.blend(new Color(-256), new Color(-65536), 0.1F * player.getHealth()).getRGB();
         }
 
-        if (mode.equalsIgnoreCase("Percentage")) {
+        if (mode.equalsIgnoreCase("Percent")) {
             drawString(getHealth(player) + "%", llllIIllllIllIl - (float) getWidth(getHealth(player) + " %"), 0.0F, blendColor);
         } else {
             drawString(getHealth(player), llllIIllllIllIl - (float) getWidth(getHealth(player) + " "), 0.0F, blendColor);
