@@ -1,5 +1,5 @@
 # RavenWeaveLite
-A Raven B+ (https://github.com/Kopamed/Raven-bPLUS) port for [Weave] (https://github.com/Weave-MC) universal mod loader.
+A [Raven B+](https://github.com/Kopamed/Raven-bPLUS) port for [Weave] (https://github.com/Weave-MC) universal mod loader.
 
 ---
 
@@ -7,11 +7,11 @@ A Raven B+ (https://github.com/Kopamed/Raven-bPLUS) port for [Weave] (https://gi
 - You can open the GUI of RavenWeaveLite by pressing Right Shift.
 
 ## Installation
-1. Download the RavenWeaveLite (https://github.com/PianoPenguin471/RavenWeaveLite/releases) mod.
+1. Download the [RavenWeaveLite](https://github.com/PianoPenguin471/RavenWeaveLite/releases) mod.
 2. Place the jar in your Weave mods folder.
     1. Windows: `%userprofile%\.weave\mods`
     2. Unix: `~/.weave/mods`
-3. Download [Weave-Manager] (https://github.com/exejar/Weave-Manager/releases).
+3. Download [Weave-Manager](https://github.com/exejar/Weave-Manager/releases).
 
 ---
 
