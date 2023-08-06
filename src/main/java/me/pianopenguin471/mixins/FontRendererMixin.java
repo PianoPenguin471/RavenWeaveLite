@@ -2,14 +2,14 @@ package me.pianopenguin471.mixins;
 
 import net.minecraft.client.gui.FontRenderer;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
+import keystrokesmod.client.tweaker.ASMEventHandler;
 
 @Mixin(FontRenderer.class)
-public class FontRendererMixin {
-    /*
-    This causes a crash and I can't be bothered to fix it bc I don't care for the feature it provides
-    @ModifyArg(method = "renderString", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/FontRenderer;renderStringAtPos(Ljava/lang/String;Z)V"), index = 0)
-    public String fixStringInputAtPos(String string) {
-        return ASMEventHandler.getUnformattedTextForChat(string);
+public abstract class FontRendererMixin {
+    @ModifyVariable(method = "renderString", at = @At(value = "HEAD"), argsOnly = true)
+    private String renderStringHook(String text) {
+        return ASMEventHandler.getUnformattedTextForChat(text);
     }
-     */
 }

@@ -13,14 +13,19 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import org.lwjgl.input.Mouse;
 
+import keystrokesmod.client.module.modules.render.AntiShuffle;
+
 public class ASMEventHandler {
    public static String eventHandlerClassName = ASMEventHandler.class.getName().replace(".", "/"); //added replace or it won't launch
    private static final Minecraft mc = Minecraft.getMinecraft();
 
    public static String getUnformattedTextForChat(String s) {
-      return s;
+      if (Raven.moduleManager.getModuleByClazz(AntiShuffle.class).isEnabled()) {
+         return AntiShuffle.getUnformattedTextForChat(s);
+      } else {
+         return s;
+      }
    }
-
 
    /**
     * called when an entity moves
