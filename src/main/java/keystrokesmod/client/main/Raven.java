@@ -1,6 +1,6 @@
 package keystrokesmod.client.main;
 
-import keystrokesmod.client.clickgui.raven.ClickGui;
+import keystrokesmod.client.clickgui.ClickGui;
 import keystrokesmod.client.command.CommandManager;
 import keystrokesmod.client.config.ConfigManager;
 import keystrokesmod.client.module.Module;

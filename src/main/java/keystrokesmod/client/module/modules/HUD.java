@@ -230,7 +230,7 @@ public class HUD extends Module {
          }
       }
 
-      protected void mouseClickMove(int mousePosX, int mousePosY, int clickedMouseButton, long timeSinceLastClick) {
+      public void mouseClickMove(int mousePosX, int mousePosY, int clickedMouseButton, long timeSinceLastClick) {
          super.mouseClickMove(mousePosX, mousePosY, clickedMouseButton, timeSinceLastClick);
          if (clickedMouseButton == 0) {
             if (this.mouseDown) {
@@ -251,7 +251,7 @@ public class HUD extends Module {
          }
       }
 
-      protected void mouseReleased(int mX, int mY, int state) {
+      public void mouseReleased(int mX, int mY, int state) {
          super.mouseReleased(mX, mY, state);
          if (state == 0) {
             this.mouseDown = false;

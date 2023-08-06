@@ -1,6 +1,6 @@
 package keystrokesmod.client.utils;
 
-import keystrokesmod.client.clickgui.raven.Terminal;
+import keystrokesmod.client.clickgui.Terminal;
 import net.weavemc.loader.api.event.ChatReceivedEvent;
 import net.weavemc.loader.api.event.SubscribeEvent;
 

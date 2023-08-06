@@ -4,7 +4,7 @@ import keystrokesmod.client.command.Command;
 import keystrokesmod.client.module.modules.combat.AimAssist;
 import net.minecraft.entity.Entity;
 
-import static keystrokesmod.client.clickgui.raven.Terminal.print;
+import static keystrokesmod.client.clickgui.Terminal.print;
 
 public class Friends extends Command {
     public Friends() {

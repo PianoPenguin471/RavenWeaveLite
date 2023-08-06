@@ -1,6 +1,6 @@
 package keystrokesmod.client.module.modules.world;
 
-import me.PianoPenguin471.events.impl.EntityJoinWorldEvent;
+import me.pianopenguin471.events.impl.EntityJoinWorldEvent;
 import keystrokesmod.client.main.Raven;
 import keystrokesmod.client.module.Module;
 import keystrokesmod.client.module.modules.player.Freecam;

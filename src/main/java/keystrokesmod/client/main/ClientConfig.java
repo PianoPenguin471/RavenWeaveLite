@@ -1,6 +1,6 @@
 package keystrokesmod.client.main;
 
-import keystrokesmod.client.clickgui.raven.components.CategoryComponent;
+import keystrokesmod.client.clickgui.components.CategoryComponent;
 import keystrokesmod.client.module.modules.client.Terminal;
 import keystrokesmod.client.module.modules.HUD;
 import keystrokesmod.client.utils.Utils;

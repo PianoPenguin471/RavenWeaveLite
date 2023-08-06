@@ -3,7 +3,7 @@ plugins {
     id("com.github.weave-mc.weave-gradle") version "649dba7468"
 }
 
-group = "com.example"
+group = "me.pianopenguin471"
 version = "1.0"
 
 minecraft.version("1.8.9")

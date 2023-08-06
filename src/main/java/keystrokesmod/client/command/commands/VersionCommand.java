@@ -4,7 +4,7 @@ import keystrokesmod.client.command.Command;
 import keystrokesmod.client.main.Raven;
 import keystrokesmod.client.utils.version.Version;
 
-import static keystrokesmod.client.clickgui.raven.Terminal.print;
+import static keystrokesmod.client.clickgui.Terminal.print;
 
 public class VersionCommand extends Command {
     public VersionCommand() {

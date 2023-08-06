@@ -1,7 +1,7 @@
 package keystrokesmod.client.module.modules.client;
 
 import com.google.gson.JsonObject;
-import keystrokesmod.client.clickgui.raven.ClickGui;
+import keystrokesmod.client.clickgui.ClickGui;
 import keystrokesmod.client.main.Raven;
 import keystrokesmod.client.module.Module;
 import keystrokesmod.client.module.setting.Setting;

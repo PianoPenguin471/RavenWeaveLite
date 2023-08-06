@@ -119,7 +119,7 @@ public class FontRenderer extends net.minecraft.client.gui.FontRenderer {
         this.readGlyphSizes();
     }
 
-    private void readFontTexture()
+    public void readFontTexture()
     {
         BufferedImage bufferedimage;
 
@@ -179,7 +179,7 @@ public class FontRenderer extends net.minecraft.client.gui.FontRenderer {
         }
     }
 
-    private void readGlyphSizes()
+    public void readGlyphSizes()
     {
         InputStream inputstream = null;
 
@@ -214,7 +214,7 @@ public class FontRenderer extends net.minecraft.client.gui.FontRenderer {
     /**
      * Render a single character with the default.png font at current (posX,posY) location...
      */
-    protected float renderDefaultChar(int ch, boolean italic)
+    public float renderDefaultChar(int ch, boolean italic)
     {
         int i = ch % 16 * 8;
         int j = ch / 16 * 8;
@@ -235,7 +235,7 @@ public class FontRenderer extends net.minecraft.client.gui.FontRenderer {
         return (float)l;
     }
 
-    private ResourceLocation getUnicodePageLocation(int page)
+    public ResourceLocation getUnicodePageLocation(int page)
     {
         if (unicodePageLocations[page] == null)
         {
@@ -248,7 +248,7 @@ public class FontRenderer extends net.minecraft.client.gui.FontRenderer {
     /**
      * Load one of the /font/glyph_XX.png into a new GL texture and store the texture ID in glyphTextureName array.
      */
-    private void loadGlyphTexture(int page)
+    public void loadGlyphTexture(int page)
     {
         bindTexture(this.getUnicodePageLocation(page));
     }
@@ -256,7 +256,7 @@ public class FontRenderer extends net.minecraft.client.gui.FontRenderer {
     /**
      * Render a single Unicode character at current (posX,posY) location using one of the /font/glyph_XX.png files...
      */
-    protected float renderUnicodeChar(char ch, boolean italic)
+    public float renderUnicodeChar(char ch, boolean italic)
     {
         if (this.glyphWidth[ch] == 0)
         {
@@ -329,7 +329,7 @@ public class FontRenderer extends net.minecraft.client.gui.FontRenderer {
     /**
      * Apply Unicode Bidirectional Algorithm to string and return a new possibly reordered string for visual rendering.
      */
-    private String bidiReorder(String text)
+    public String bidiReorder(String text)
     {
         try
         {
@@ -346,7 +346,7 @@ public class FontRenderer extends net.minecraft.client.gui.FontRenderer {
     /**
      * Reset all style flag fields in the class to false; called at the start of string rendering
      */
-    private void resetStyles()
+    public void resetStyles()
     {
         this.randomStyle = false;
         this.boldStyle = false;
@@ -358,7 +358,7 @@ public class FontRenderer extends net.minecraft.client.gui.FontRenderer {
     /**
      * Render a single line string at the current (posX,posY) and update posX
      */
-    private void renderStringAtPos(String text, boolean shadow)
+    public void renderStringAtPos(String text, boolean shadow)
     {
         for (int i = 0; i < text.length(); ++i)
         {
@@ -530,7 +530,7 @@ public class FontRenderer extends net.minecraft.client.gui.FontRenderer {
     /**
      * Render string either left or right aligned depending on bidiFlag
      */
-    private int renderStringAligned(String text, int x, int y, int width, int color, boolean dropShadow)
+    public int renderStringAligned(String text, int x, int y, int width, int color, boolean dropShadow)
     {
         if (this.bidiFlag)
         {
@@ -544,7 +544,7 @@ public class FontRenderer extends net.minecraft.client.gui.FontRenderer {
     /**
      * Render single line string by setting GL color, current (posX,posY), and calling renderStringAtPos()
      */
-    private int renderString(String text, float x, float y, int color, boolean dropShadow)
+    public int renderString(String text, float x, float y, int color, boolean dropShadow)
     {
         if (text == null)
         {
@@ -743,7 +743,7 @@ public class FontRenderer extends net.minecraft.client.gui.FontRenderer {
     /**
      * Remove all newline characters from the end of the string
      */
-    private String trimStringNewline(String text)
+    public String trimStringNewline(String text)
     {
         while (text != null && text.endsWith("\n"))
         {
@@ -768,7 +768,7 @@ public class FontRenderer extends net.minecraft.client.gui.FontRenderer {
      * Perform actual work of rendering a multi-line string with wordwrap and with darker drop shadow color if flag is
      * set
      */
-    private void renderSplitString(String str, int x, int y, int wrapWidth, boolean addShadow)
+    public void renderSplitString(String str, int x, int y, int wrapWidth, boolean addShadow)
     {
         for (String s : this.listFormattedStringToWidth(str, wrapWidth))
         {
@@ -819,7 +819,7 @@ public class FontRenderer extends net.minecraft.client.gui.FontRenderer {
     /**
      * Inserts newline and formatting into a string to wrap it within the specified width.
      */
-    String wrapFormattedStringToWidth(String str, int wrapWidth)
+    public String wrapFormattedStringToWidth(String str, int wrapWidth)
     {
         int i = this.sizeStringToWidth(str, wrapWidth);
 
@@ -840,7 +840,7 @@ public class FontRenderer extends net.minecraft.client.gui.FontRenderer {
     /**
      * Determines how many characters from the string will fit into the specified width.
      */
-    private int sizeStringToWidth(String str, int wrapWidth)
+    public int sizeStringToWidth(String str, int wrapWidth)
     {
         int i = str.length();
         int j = 0;
@@ -907,7 +907,7 @@ public class FontRenderer extends net.minecraft.client.gui.FontRenderer {
     /**
      * Checks if the char code is a hexadecimal character, used to set colour.
      */
-    private static boolean isFormatColor(char colorChar)
+    public static boolean isFormatColor(char colorChar)
     {
         return colorChar >= 48 && colorChar <= 57 || colorChar >= 97 && colorChar <= 102 || colorChar >= 65 && colorChar <= 70;
     }
@@ -915,7 +915,7 @@ public class FontRenderer extends net.minecraft.client.gui.FontRenderer {
     /**
      * Checks if the char code is O-K...lLrRk-o... used to set special formatting.
      */
-    private static boolean isFormatSpecial(char formatChar)
+    public static boolean isFormatSpecial(char formatChar)
     {
         return formatChar >= 107 && formatChar <= 111 || formatChar >= 75 && formatChar <= 79 || formatChar == 114 || formatChar == 82;
     }
