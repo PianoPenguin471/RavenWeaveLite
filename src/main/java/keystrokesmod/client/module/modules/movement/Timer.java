@@ -1,6 +1,6 @@
 package keystrokesmod.client.module.modules.movement;
 
-import keystrokesmod.client.clickgui.raven.ClickGui;
+import keystrokesmod.client.clickgui.ClickGui;
 import keystrokesmod.client.module.Module;
 import keystrokesmod.client.module.setting.impl.SliderSetting;
 import keystrokesmod.client.module.setting.impl.TickSetting;

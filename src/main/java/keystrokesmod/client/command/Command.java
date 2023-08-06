@@ -1,6 +1,6 @@
 package keystrokesmod.client.command;
 
-import keystrokesmod.client.clickgui.raven.Terminal;
+import keystrokesmod.client.clickgui.Terminal;
 
 public abstract class Command {
     private final String name;

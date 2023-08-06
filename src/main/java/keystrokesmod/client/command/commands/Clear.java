@@ -1,6 +1,6 @@
 package keystrokesmod.client.command.commands;
 
-import keystrokesmod.client.clickgui.raven.Terminal;
+import keystrokesmod.client.clickgui.Terminal;
 import keystrokesmod.client.command.Command;
 
 public class Clear extends Command {

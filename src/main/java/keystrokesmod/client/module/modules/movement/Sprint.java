@@ -9,26 +9,26 @@ import net.weavemc.loader.api.event.SubscribeEvent;
 import net.weavemc.loader.api.event.TickEvent;
 
 public class Sprint extends Module {
-   public static TickSetting a;
+   public static TickSetting omni;
 
    public Sprint() {
       super("Sprint", ModuleCategory.movement);
-      a = new TickSetting("OmniSprint", false);
-      this.registerSetting(a);
+      this.registerSetting(omni = new TickSetting("OmniSprint", false));
    }
 
    @SubscribeEvent
-   public void p(TickEvent e) {
-      if (Utils.Player.isPlayerInGame() && mc.inGameHasFocus) {
-         EntityPlayerSP p = mc.thePlayer;
-         if (a.isToggled()) {
-            if (Utils.Player.isMoving() && p.getFoodStats().getFoodLevel() > 6) {
-               p.setSprinting(true);
+   public void onTick(TickEvent e) {
+      if (this.enabled) {
+         if (Utils.Player.isPlayerInGame() && mc.inGameHasFocus) {
+            EntityPlayerSP p = mc.thePlayer;
+            if (omni.isToggled()) {
+               if (Utils.Player.isMoving() && p.getFoodStats().getFoodLevel() > 6) {
+                  p.setSprinting(true);
+               }
+            } else {
+               KeyBinding.setKeyBindState(mc.gameSettings.keyBindSprint.getKeyCode(), true);
             }
-         } else {
-            KeyBinding.setKeyBindState(mc.gameSettings.keyBindSprint.getKeyCode(), true);
          }
       }
-
    }
 }

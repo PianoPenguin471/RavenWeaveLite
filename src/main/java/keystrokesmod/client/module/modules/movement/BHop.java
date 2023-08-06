@@ -17,18 +17,20 @@ public class BHop extends Module {
    }
 
    public void update() {
-      Module fly = Raven.moduleManager.getModuleByClazz(Fly.class);
-      if (fly != null && !fly.isEnabled() && Utils.Player.isMoving() && !mc.thePlayer.isInWater()) {
-         KeyBinding.setKeyBindState(mc.gameSettings.keyBindJump.getKeyCode(), false);
-         mc.thePlayer.noClip = true;
-         if (mc.thePlayer.onGround) {
-            mc.thePlayer.jump();
-         }
+      if (this.enabled) {
+         Module fly = Raven.moduleManager.getModuleByClazz(Fly.class);
+         if (fly != null && !fly.isEnabled() && Utils.Player.isMoving() && !mc.thePlayer.isInWater()) {
+            KeyBinding.setKeyBindState(mc.gameSettings.keyBindJump.getKeyCode(), false);
+            mc.thePlayer.noClip = true;
+            if (mc.thePlayer.onGround) {
+               mc.thePlayer.jump();
+            }
 
-         mc.thePlayer.setSprinting(true);
-         double spd = 0.0025D * a.getInput();
-         double m = (float)(Math.sqrt(mc.thePlayer.motionX * mc.thePlayer.motionX + mc.thePlayer.motionZ * mc.thePlayer.motionZ) + spd);
-         Utils.Player.bop(m);
+            mc.thePlayer.setSprinting(true);
+            double spd = 0.0025D * a.getInput();
+            double m = (float)(Math.sqrt(mc.thePlayer.motionX * mc.thePlayer.motionX + mc.thePlayer.motionZ * mc.thePlayer.motionZ) + spd);
+            Utils.Player.bop(m);
+         }
       }
    }
 }
