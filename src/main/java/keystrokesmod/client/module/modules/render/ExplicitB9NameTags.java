@@ -52,7 +52,7 @@ public class ExplicitB9NameTags extends Module {
     public ExplicitB9NameTags() {
         super("(ExplicitB9)NameTags", ModuleCategory.render);
 
-        modeSetting = new SliderSetting("Mode (Hearts/Percentage)", 1.0D, 1.0D, 2.0D, 1.0D);
+        modeSetting = new SliderSetting("Mode (Hearts1/Hearts2/Percentage)", 1.0D, 1.0D, 3.0D, 1.0D);
         mode = "Percentage"; // default value
         scaleSetting = new SliderSetting("Scale", 5.0D, 0.1D, 10.0D, 0.1D);
         rangeSetting = new SliderSetting("Range", 0.0D, 0.0D, 512.0D, 1.0D);
@@ -73,7 +73,14 @@ public class ExplicitB9NameTags extends Module {
         scale = (float) scaleSetting.getInput();
         armor = armorSetting.isToggled();
         dura = durabilitySetting.isToggled();
-        mode = modeSetting.getInput() == 1.0D ? "Hearts" : "Percentage";
+        double modeInput = modeSetting.getInput();
+        if (modeInput == 1.0D) {
+            mode = "Hearts1";
+        } else if (modeInput == 2.0D) {
+            mode = "Hearts2";
+        } else {
+            mode = "Percentage";
+        }
     }
 
     @SubscribeEvent
@@ -140,7 +147,16 @@ public class ExplicitB9NameTags extends Module {
 
     private String getHealth(EntityPlayer player) {
         DecimalFormat decimalFormat = new DecimalFormat("0.#");
-        return mode.equalsIgnoreCase("Percentage") ? decimalFormat.format(player.getHealth() * 5.0F + player.getAbsorptionAmount() * 5.0F) : decimalFormat.format(player.getHealth() / 2.0F + player.getAbsorptionAmount() / 2.0F);
+        double healthValue;
+        if (mode.equalsIgnoreCase("Percentage")) {
+            healthValue = player.getHealth() * 5.0F + player.getAbsorptionAmount() * 5.0F;
+        } else if (mode.equalsIgnoreCase("Hearts1")) {
+            healthValue = player.getHealth() / 2.0F + player.getAbsorptionAmount() / 2.0F;
+        } else {
+            //HeartsX2
+            healthValue = player.getHealth() + player.getAbsorptionAmount();
+        }
+        return decimalFormat.format(healthValue);
     }
 
     private void drawNames(EntityPlayer player) {
