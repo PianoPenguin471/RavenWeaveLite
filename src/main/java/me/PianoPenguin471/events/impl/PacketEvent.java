@@ -1,7 +1,7 @@
-package me.pianopenguin471.events.impl;
+package me.PianoPenguin471.events.impl;
 
-import me.pianopenguin471.events.ext.EventDirection;
-import me.pianopenguin471.events.ext.IEventDirection;
+import me.PianoPenguin471.events.ext.EventDirection;
+import me.PianoPenguin471.events.ext.IEventDirection;
 import net.minecraft.network.Packet;
 import net.weavemc.loader.api.event.CancellableEvent;
 

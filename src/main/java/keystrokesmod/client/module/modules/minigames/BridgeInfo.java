@@ -1,6 +1,6 @@
 package keystrokesmod.client.module.modules.minigames;
 
-import me.pianopenguin471.events.impl.EntityJoinWorldEvent;
+import me.PianoPenguin471.events.impl.EntityJoinWorldEvent;
 import keystrokesmod.client.module.Module;
 import keystrokesmod.client.module.setting.impl.DescriptionSetting;
 import keystrokesmod.client.module.setting.impl.TickSetting;

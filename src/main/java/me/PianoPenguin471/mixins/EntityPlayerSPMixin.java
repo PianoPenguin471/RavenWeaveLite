@@ -1,4 +1,4 @@
-package me.pianopenguin471.mixins;
+package me.PianoPenguin471.mixins;
 
 import com.mojang.authlib.GameProfile;
 import keystrokesmod.client.main.Raven;

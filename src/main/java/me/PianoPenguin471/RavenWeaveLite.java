@@ -1,4 +1,4 @@
-package me.pianopenguin471;
+package me.PianoPenguin471;
 
 import keystrokesmod.client.main.Raven;
 import net.weavemc.loader.api.ModInitializer;

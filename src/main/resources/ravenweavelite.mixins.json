@@ -1,6 +1,6 @@
 {
   "compatibilityLevel": "JAVA_8",
-  "package": "me.pianopenguin471.mixins",
+  "package": "me.PianoPenguin471.mixins",
   "mixins": [
     "MinecraftMixin",
     "EntityMixin",

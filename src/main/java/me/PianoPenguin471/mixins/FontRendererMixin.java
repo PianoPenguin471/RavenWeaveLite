@@ -1,4 +1,4 @@
-package me.pianopenguin471.mixins;
+package me.PianoPenguin471.mixins;
 
 import net.minecraft.client.gui.FontRenderer;
 import org.spongepowered.asm.mixin.Mixin;

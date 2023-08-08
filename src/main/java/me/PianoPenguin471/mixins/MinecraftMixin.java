@@ -1,4 +1,4 @@
-package me.pianopenguin471.mixins;
+package me.PianoPenguin471.mixins;
 
 import keystrokesmod.client.tweaker.ASMEventHandler;
 import net.minecraft.client.Minecraft;

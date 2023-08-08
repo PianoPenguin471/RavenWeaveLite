@@ -1,4 +1,4 @@
-package me.pianopenguin471.mixins;
+package me.PianoPenguin471.mixins;
 
 import keystrokesmod.client.tweaker.ASMEventHandler;
 import net.minecraft.block.Block;
@@ -139,125 +139,114 @@ public abstract class EntityMixin {
      * @reason too complicated to inject without mod compatibility issues
      */
     @Overwrite
-    public void moveEntity(double p_moveEntity_1_, double p_moveEntity_3_, double p_moveEntity_5_) {
+    public void moveEntity(double var1, double var3, double var5) {
         if (this.noClip) {
-            this.setEntityBoundingBox(
-                    this.getEntityBoundingBox().offset(p_moveEntity_1_, p_moveEntity_3_, p_moveEntity_5_));
+            this.setEntityBoundingBox(this.getEntityBoundingBox().offset(var1, var3, var5));
             this.resetPositionToBB();
         } else {
             this.worldObj.theProfiler.startSection("move");
-            double d0 = this.posX;
-            double d1 = this.posY;
-            double d2 = this.posZ;
+            double var7 = this.posX;
+            double var9 = this.posY;
+            double var11 = this.posZ;
             if (this.isInWeb) {
                 this.isInWeb = false;
-                p_moveEntity_1_ *= 0.25D;
-                p_moveEntity_3_ *= 0.05000000074505806D;
-                p_moveEntity_5_ *= 0.25D;
-                this.motionX = 0.0D;
-                this.motionY = 0.0D;
-                this.motionZ = 0.0D;
+                var1 *= 0.25;
+                var3 *= 0.05000000074505806;
+                var5 *= 0.25;
+                this.motionX = 0.0;
+                this.motionY = 0.0;
+                this.motionZ = 0.0;
             }
 
-            double d3 = p_moveEntity_1_;
-            double d4 = p_moveEntity_3_;
-            double d5 = p_moveEntity_5_;
+            double var13 = var1;
+            double var15 = var3;
+            double var17 = var5;
 
             Minecraft mc = Minecraft.getMinecraft();
-            boolean flag = mc.thePlayer.isSneaking();
+            boolean var19 = mc.thePlayer.isSneaking() && mc.thePlayer.onGround;
 
-            if (flag) {
-                double d6;
-                for (d6 = 0.05D; (p_moveEntity_1_ != 0.0D) && this.worldObj
-                        .getCollidingBoundingBoxes(((Entity) ((Object) this)),
-                                this.getEntityBoundingBox().offset(p_moveEntity_1_, -1.0D, 0.0D))
-                        .isEmpty(); d3 = p_moveEntity_1_) {
-                    if ((p_moveEntity_1_ < d6) && (p_moveEntity_1_ >= -d6)) {
-                        p_moveEntity_1_ = 0.0D;
-                    } else if (p_moveEntity_1_ > 0.0D) {
-                        p_moveEntity_1_ -= d6;
+            if (var19) {
+                double var20;
+                for(var20 = 0.05; var1 != 0.0 && this.worldObj.getCollidingBoundingBoxes(((Entity) ((Object) this)), this.getEntityBoundingBox().offset(var1, -1.0, 0.0)).isEmpty(); var13 = var1) {
+                    if (var1 < var20 && var1 >= -var20) {
+                        var1 = 0.0;
+                    } else if (var1 > 0.0) {
+                        var1 -= var20;
                     } else {
-                        p_moveEntity_1_ += d6;
+                        var1 += var20;
                     }
                 }
 
-                for (; (p_moveEntity_5_ != 0.0D) && this.worldObj
-                        .getCollidingBoundingBoxes(((Entity) ((Object) this)),
-                                this.getEntityBoundingBox().offset(0.0D, -1.0D, p_moveEntity_5_))
-                        .isEmpty(); d5 = p_moveEntity_5_) {
-                    if ((p_moveEntity_5_ < d6) && (p_moveEntity_5_ >= -d6)) {
-                        p_moveEntity_5_ = 0.0D;
-                    } else if (p_moveEntity_5_ > 0.0D) {
-                        p_moveEntity_5_ -= d6;
+                for (; (var5 != 0.0) && this.worldObj.getCollidingBoundingBoxes(((Entity) ((Object) this)), this.getEntityBoundingBox().offset(0.0, -1.0, var5)).isEmpty(); var17 = var5) {
+                    if (var5 < var20 && var5 >= -var20) {
+                        var5 = 0.0;
+                    } else if (var5 > 0.0) {
+                        var5 -= var20;
                     } else {
-                        p_moveEntity_5_ += d6;
+                        var5 += var20;
                     }
                 }
 
-                for (; (p_moveEntity_1_ != 0.0D) && (p_moveEntity_5_ != 0.0D)
-                        && this.worldObj
-                        .getCollidingBoundingBoxes(((Entity) ((Object) this)),
-                                this.getEntityBoundingBox().offset(p_moveEntity_1_, -1.0D, p_moveEntity_5_))
-                        .isEmpty(); d5 = p_moveEntity_5_) {
-                    if ((p_moveEntity_1_ < d6) && (p_moveEntity_1_ >= -d6)) {
-                        p_moveEntity_1_ = 0.0D;
-                    } else if (p_moveEntity_1_ > 0.0D) {
-                        p_moveEntity_1_ -= d6;
+                for (; (var1 != 0.0) && (var5 != 0.0) && this.worldObj.getCollidingBoundingBoxes(((Entity) ((Object) this)), this.getEntityBoundingBox().offset(var1, -1.0, var5)).isEmpty(); var17 = var5) {
+                    if ((var1 < var20) && (var1 >= -var20)) {
+                        var1 = 0.0;
+                    } else if (var1 > 0.0) {
+                        var1 -= var20;
                     } else {
-                        p_moveEntity_1_ += d6;
+                        var1 += var20;
                     }
 
-                    d3 = p_moveEntity_1_;
-                    if ((p_moveEntity_5_ < d6) && (p_moveEntity_5_ >= -d6)) {
-                        p_moveEntity_5_ = 0.0D;
-                    } else if (p_moveEntity_5_ > 0.0D) {
-                        p_moveEntity_5_ -= d6;
+                    var13 = var1;
+                    if ((var5 < var20) && (var5 >= -var20)) {
+                        var5 = 0.0;
+                    } else if (var5 > 0.0) {
+                        var5 -= var20;
                     } else {
-                        p_moveEntity_5_ += d6;
+                        var5 += var20;
                     }
                 }
             }
 
             List<AxisAlignedBB> list1 = this.worldObj.getCollidingBoundingBoxes(((Entity) ((Object) this)),
-                    this.getEntityBoundingBox().addCoord(p_moveEntity_1_, p_moveEntity_3_, p_moveEntity_5_));
+                    this.getEntityBoundingBox().addCoord(var1, var3, var5));
             AxisAlignedBB axisalignedbb = this.getEntityBoundingBox();
 
             AxisAlignedBB axisalignedbb1;
-            for (Iterator var22 = list1.iterator(); var22.hasNext(); p_moveEntity_3_ = axisalignedbb1
-                    .calculateYOffset(this.getEntityBoundingBox(), p_moveEntity_3_)) {
+            for (Iterator var22 = list1.iterator(); var22.hasNext(); var3 = axisalignedbb1
+                    .calculateYOffset(this.getEntityBoundingBox(), var3)) {
                 axisalignedbb1 = (AxisAlignedBB) var22.next();
             }
 
-            this.setEntityBoundingBox(this.getEntityBoundingBox().offset(0.0D, p_moveEntity_3_, 0.0D));
-            boolean flag1 = this.onGround || ((d4 != p_moveEntity_3_) && (d4 < 0.0D));
+            this.setEntityBoundingBox(this.getEntityBoundingBox().offset(0.0, var3, 0.0));
+            boolean flag1 = this.onGround || ((var15 != var3) && (var15 < 0.0));
 
             AxisAlignedBB axisalignedbb13;
             Iterator var55;
-            for (var55 = list1.iterator(); var55.hasNext(); p_moveEntity_1_ = axisalignedbb13
-                    .calculateXOffset(this.getEntityBoundingBox(), p_moveEntity_1_)) {
+            for (var55 = list1.iterator(); var55.hasNext(); var1 = axisalignedbb13
+                    .calculateXOffset(this.getEntityBoundingBox(), var1)) {
                 axisalignedbb13 = (AxisAlignedBB) var55.next();
             }
 
-            this.setEntityBoundingBox(this.getEntityBoundingBox().offset(p_moveEntity_1_, 0.0D, 0.0D));
+            this.setEntityBoundingBox(this.getEntityBoundingBox().offset(var1, 0.0, 0.0));
 
-            for (var55 = list1.iterator(); var55.hasNext(); p_moveEntity_5_ = axisalignedbb13
-                    .calculateZOffset(this.getEntityBoundingBox(), p_moveEntity_5_)) {
+            for (var55 = list1.iterator(); var55.hasNext(); var5 = axisalignedbb13
+                    .calculateZOffset(this.getEntityBoundingBox(), var5)) {
                 axisalignedbb13 = (AxisAlignedBB) var55.next();
             }
 
-            this.setEntityBoundingBox(this.getEntityBoundingBox().offset(0.0D, 0.0D, p_moveEntity_5_));
-            if ((this.stepHeight > 0.0F) && flag1 && ((d3 != p_moveEntity_1_) || (d5 != p_moveEntity_5_))) {
-                double d11 = p_moveEntity_1_;
-                double d7 = p_moveEntity_3_;
-                double d8 = p_moveEntity_5_;
+            this.setEntityBoundingBox(this.getEntityBoundingBox().offset(0.0, 0.0, var5));
+            if ((this.stepHeight > 0.0F) && flag1 && ((var13 != var1) || (var17 != var5))) {
+                double d11 = var1;
+                double d7 = var3;
+                double d8 = var5;
                 AxisAlignedBB axisalignedbb3 = this.getEntityBoundingBox();
                 this.setEntityBoundingBox(axisalignedbb);
-                p_moveEntity_3_ = this.stepHeight;
+                var3 = this.stepHeight;
                 List<AxisAlignedBB> list = this.worldObj.getCollidingBoundingBoxes(((Entity) ((Object) this)),
-                        this.getEntityBoundingBox().addCoord(d3, p_moveEntity_3_, d5));
+                        this.getEntityBoundingBox().addCoord(var13, var3, var17));
                 AxisAlignedBB axisalignedbb4 = this.getEntityBoundingBox();
-                AxisAlignedBB axisalignedbb5 = axisalignedbb4.addCoord(d3, 0.0D, d5);
-                double d9 = p_moveEntity_3_;
+                AxisAlignedBB axisalignedbb5 = axisalignedbb4.addCoord(var13, 0.0, var17);
+                double d9 = var3;
 
                 AxisAlignedBB axisalignedbb6;
                 for (Iterator var35 = list.iterator(); var35
@@ -265,8 +254,8 @@ public abstract class EntityMixin {
                     axisalignedbb6 = (AxisAlignedBB) var35.next();
                 }
 
-                axisalignedbb4 = axisalignedbb4.offset(0.0D, d9, 0.0D);
-                double d15 = d3;
+                axisalignedbb4 = axisalignedbb4.offset(0.0, d9, 0.0);
+                double d15 = var13;
 
                 AxisAlignedBB axisalignedbb7;
                 for (Iterator var37 = list.iterator(); var37
@@ -274,8 +263,8 @@ public abstract class EntityMixin {
                     axisalignedbb7 = (AxisAlignedBB) var37.next();
                 }
 
-                axisalignedbb4 = axisalignedbb4.offset(d15, 0.0D, 0.0D);
-                double d16 = d5;
+                axisalignedbb4 = axisalignedbb4.offset(d15, 0.0, 0.0);
+                double d16 = var17;
 
                 AxisAlignedBB axisalignedbb8;
                 for (Iterator var39 = list.iterator(); var39
@@ -283,9 +272,9 @@ public abstract class EntityMixin {
                     axisalignedbb8 = (AxisAlignedBB) var39.next();
                 }
 
-                axisalignedbb4 = axisalignedbb4.offset(0.0D, 0.0D, d16);
+                axisalignedbb4 = axisalignedbb4.offset(0.0, 0.0, d16);
                 AxisAlignedBB axisalignedbb14 = this.getEntityBoundingBox();
-                double d17 = p_moveEntity_3_;
+                double d17 = var3;
 
                 AxisAlignedBB axisalignedbb9;
                 for (Iterator var42 = list.iterator(); var42
@@ -293,8 +282,8 @@ public abstract class EntityMixin {
                     axisalignedbb9 = (AxisAlignedBB) var42.next();
                 }
 
-                axisalignedbb14 = axisalignedbb14.offset(0.0D, d17, 0.0D);
-                double d18 = d3;
+                axisalignedbb14 = axisalignedbb14.offset(0.0, d17, 0.0);
+                double d18 = var13;
 
                 AxisAlignedBB axisalignedbb10;
                 for (Iterator var44 = list.iterator(); var44
@@ -302,8 +291,8 @@ public abstract class EntityMixin {
                     axisalignedbb10 = (AxisAlignedBB) var44.next();
                 }
 
-                axisalignedbb14 = axisalignedbb14.offset(d18, 0.0D, 0.0D);
-                double d19 = d5;
+                axisalignedbb14 = axisalignedbb14.offset(d18, 0.0, 0.0);
+                double d19 = var17;
 
                 AxisAlignedBB axisalignedbb11;
                 for (Iterator var46 = list.iterator(); var46
@@ -311,32 +300,32 @@ public abstract class EntityMixin {
                     axisalignedbb11 = (AxisAlignedBB) var46.next();
                 }
 
-                axisalignedbb14 = axisalignedbb14.offset(0.0D, 0.0D, d19);
+                axisalignedbb14 = axisalignedbb14.offset(0.0, 0.0, d19);
                 double d20 = (d15 * d15) + (d16 * d16);
                 double d10 = (d18 * d18) + (d19 * d19);
                 if (d20 > d10) {
-                    p_moveEntity_1_ = d15;
-                    p_moveEntity_5_ = d16;
-                    p_moveEntity_3_ = -d9;
+                    var1 = d15;
+                    var5 = d16;
+                    var3 = -d9;
                     this.setEntityBoundingBox(axisalignedbb4);
                 } else {
-                    p_moveEntity_1_ = d18;
-                    p_moveEntity_5_ = d19;
-                    p_moveEntity_3_ = -d17;
+                    var1 = d18;
+                    var5 = d19;
+                    var3 = -d17;
                     this.setEntityBoundingBox(axisalignedbb14);
                 }
 
                 AxisAlignedBB axisalignedbb12;
-                for (Iterator var50 = list.iterator(); var50.hasNext(); p_moveEntity_3_ = axisalignedbb12
-                        .calculateYOffset(this.getEntityBoundingBox(), p_moveEntity_3_)) {
+                for (Iterator var50 = list.iterator(); var50.hasNext(); var3 = axisalignedbb12
+                        .calculateYOffset(this.getEntityBoundingBox(), var3)) {
                     axisalignedbb12 = (AxisAlignedBB) var50.next();
                 }
 
-                this.setEntityBoundingBox(this.getEntityBoundingBox().offset(0.0D, p_moveEntity_3_, 0.0D));
-                if (((d11 * d11) + (d8 * d8)) >= ((p_moveEntity_1_ * p_moveEntity_1_) + (p_moveEntity_5_ * p_moveEntity_5_))) {
-                    p_moveEntity_1_ = d11;
-                    p_moveEntity_3_ = d7;
-                    p_moveEntity_5_ = d8;
+                this.setEntityBoundingBox(this.getEntityBoundingBox().offset(0.0, var3, 0.0));
+                if (((d11 * d11) + (d8 * d8)) >= ((var1 * var1) + (var5 * var5))) {
+                    var1 = d11;
+                    var3 = d7;
+                    var5 = d8;
                     this.setEntityBoundingBox(axisalignedbb3);
                 }
             }
@@ -345,8 +334,8 @@ public abstract class EntityMixin {
             this.worldObj.theProfiler.startSection("rest");
             this.resetPositionToBB();
             this.isCollidedHorizontally = ASMEventHandler.onEntityMove((Entity) (Object) this);
-            this.isCollidedVertically = d4 != p_moveEntity_3_;
-            this.onGround = this.isCollidedVertically && (d4 < 0.0D);
+            this.isCollidedVertically = var15 != var3;
+            this.onGround = this.isCollidedVertically && (var15 < 0.0);
             this.isCollided = this.isCollidedHorizontally || this.isCollidedVertically;
             int i = MathHelper.floor_double(this.posX);
             int j = MathHelper.floor_double(this.posY - 0.20000000298023224D);
@@ -361,25 +350,25 @@ public abstract class EntityMixin {
                 }
             }
 
-            this.updateFallState(p_moveEntity_3_, this.onGround, block1, blockpos);
-            if (d3 != p_moveEntity_1_) {
-                this.motionX = 0.0D;
+            this.updateFallState(var3, this.onGround, block1, blockpos);
+            if (var13 != var1) {
+                this.motionX = 0.0;
             }
 
-            if (d5 != p_moveEntity_5_) {
-                this.motionZ = 0.0D;
+            if (var17 != var5) {
+                this.motionZ = 0.0;
             }
 
-            if (d4 != p_moveEntity_3_) {
+            if (var15 != var3) {
                 block1.onLanded(this.worldObj, ((Entity) ((Object) this)));
             }
 
-            if (this.canTriggerWalking() && !flag && (this.ridingEntity == null)) {
-                double d12 = this.posX - d0;
-                double d13 = this.posY - d1;
-                double d14 = this.posZ - d2;
+            if (this.canTriggerWalking() && !var19 && (this.ridingEntity == null)) {
+                double d12 = this.posX - var7;
+                double d13 = this.posY - var9;
+                double d14 = this.posZ - var11;
                 if (block1 != Blocks.ladder) {
-                    d13 = 0.0D;
+                    d13 = 0.0;
                 }
 
                 if ((block1 != null) && this.onGround) {

@@ -3,6 +3,6 @@
     "ravenweavelite.mixins.json"
   ],
   "entrypoints": [
-    "me.pianopenguin471.RavenWeaveLite"
+    "me.PianoPenguin471.RavenWeaveLite"
   ]
 }

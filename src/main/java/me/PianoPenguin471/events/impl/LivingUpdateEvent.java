@@ -1,4 +1,4 @@
-package me.pianopenguin471.events.impl;
+package me.PianoPenguin471.events.impl;
 
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;

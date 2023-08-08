@@ -1,7 +1,7 @@
-package me.pianopenguin471.events.impl;
+package me.PianoPenguin471.events.impl;
 
-import me.pianopenguin471.events.ext.EventTiming;
-import me.pianopenguin471.events.ext.IEventTiming;
+import me.PianoPenguin471.events.ext.EventTiming;
+import me.PianoPenguin471.events.ext.IEventTiming;
 import net.weavemc.loader.api.event.Event;
 
 public class UpdateEvent extends Event implements IEventTiming {

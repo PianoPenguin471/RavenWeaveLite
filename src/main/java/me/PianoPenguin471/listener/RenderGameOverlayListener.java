@@ -1,4 +1,4 @@
-package me.pianopenguin471.listener;
+package me.PianoPenguin471.listener;
 
 import net.weavemc.loader.api.event.RenderGameOverlayEvent;
 import net.weavemc.loader.api.event.SubscribeEvent;
