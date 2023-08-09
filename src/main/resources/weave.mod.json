@@ -4,5 +4,8 @@
   ],
   "entrypoints": [
     "me.PianoPenguin471.RavenWeaveLite"
+  ],
+  "hooks": [
+    "me.PianoPenguin471.hooks.CPSHook"
   ]
 }

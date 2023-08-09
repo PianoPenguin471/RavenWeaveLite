@@ -30,7 +30,7 @@ public class LeftClicker extends Module {
     public static SliderSetting jitterLeft;
     public static TickSetting weaponOnly;
     public static TickSetting breakBlocks;
-    public static DoubleSliderSetting leftCPS, breakBlocksDelay;;
+    public static DoubleSliderSetting leftCPS, breakBlocksDelay;
     public static TickSetting inventoryFill;
 
     public static ComboSetting clickStyle, clickTimings;
@@ -217,6 +217,7 @@ public class LeftClicker extends Module {
             if (weaponOnly.isToggled() && !Utils.Player.isPlayerHoldingWeapon()) {
                 return;
             }
+
             this.leftClickExecute(mc.gameSettings.keyBindAttack.getKeyCode());
         }
     }

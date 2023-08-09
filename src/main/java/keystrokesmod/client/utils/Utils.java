@@ -9,6 +9,7 @@ import keystrokesmod.client.module.Module;
 import keystrokesmod.client.module.modules.combat.LeftClicker;
 import keystrokesmod.client.module.setting.impl.DoubleSliderSetting;
 import keystrokesmod.client.module.setting.impl.SliderSetting;
+import me.PianoPenguin471.hooks.CPSHook;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.FontRenderer;
@@ -357,7 +358,13 @@ public class Utils {
          }
          buttons.put(mouseButton, (byte) (held ? 1 : 0));
          ReflectionUtils.setPrivateValue(Mouse.class, null, buttons, "buttons");
-
+         if (held) {
+            if (mouseButton == 0) {
+               CPSHook.leftClick();
+            } else {
+               CPSHook.rightClick();
+            }
+         }
       }
 
       public static void correctSliders(SliderSetting c, SliderSetting d) {
