@@ -8,9 +8,9 @@ import org.objectweb.asm.tree.*;
 public class CPSHook extends Hook {
     public static int leftCps = 0;
     public static int rightCps = 0;
-    public static String CPS_ClASS_NAME = "com/moonsworth/lunar/client/CHRICROORHCHIRRRICHOCRIHR/RIRIRCCOOIHIRHIIIRIOIOCIH",
-            LEFT_CPS_METHOD_NAME = "ROOCIOHCOOCCIRHIOOCCOIHOH",
-            RIGHT_CPS_METHOD_NAME = "HCRCHIIHCHOCRRRICORIROIOI", CURRENT_HOOK_CLASS_PATH = "me/PianoPenguin471/hooks/CPSHook";
+    public static String CPS_ClASS_NAME = "com/moonsworth/lunar/client/ORRIHOIICHROIOHCCOCCCORHI/OCOCOCIHIHCRCIHROCRRHOIOH",
+            LEFT_CPS_METHOD_NAME = "ROCCOOROOHIROCIIRIHOOIOIO",
+            RIGHT_CPS_METHOD_NAME = "CRRHOCOHCIOCOIHHCRIIORRCO", CURRENT_HOOK_CLASS_PATH = "me/PianoPenguin471/hooks/CPSHook";
     public CPSHook() {
         super(CPS_ClASS_NAME);
     }
